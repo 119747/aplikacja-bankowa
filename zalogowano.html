@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Bankowa SAN 119747</title>
+    <style type="text/css">
+        body {
+      background-color: lightblue;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+    }
+     table {
+        border-radius:20px;
+        border: 5px #5F9BD1 solid;
+        width:;
+        height:;
+        background-color: #D6E3EF;
+        padding: 10px;
+    }
+       </style>
+       <script>
+          balance=Math.floor(Math.random()*(10001))-1000;
+          window.onload=start;
+        function start(){
+             document.getElementById("1").innerHTML="Saldo: $"+balance.toFixed(2);
+        }
+        document.getElementById("1").innerHTML="Saldo: $"+ balance.toFixed(2);
+        function updateBalance(){
+            document.getElementById("1").innerHTML="Saldo: $"+balance.toFixed(2);
+        }
+        function deposit(){
+            let amount=parseFloat(document.getElementById("amount").value);
+            if (!isNaN(amount)&&amount>0) {
+                balance+=amount;
+                updateBalance();
+            } else {
+                alert("Proszę wprowadzić prawidłową kwotę.");
+            }
+        }
+        function withdraw() {
+            let amount = parseFloat(document.getElementById("amount").value);
+            if (!isNaN(amount) && amount > 0) {
+                if (amount <= balance) {
+                    balance -= amount;
+                    updateBalance();
+                } else {
+                    alert("Brak wystarczających środków na koncie.");
+                }
+            } else {
+                alert("Proszę wprowadzić prawidłową kwotę.");
+            }
+        }
+        updateBalance();
+    </script>
+</head>
+<body>
+    <h1>Aplikacja Bankowa SAN 119747</h1>
+    <p id="1" name="1">Saldo:  </p>
+    <label for="amount">Kwota:</label>
+    <input type="number" id="amount" placeholder="Wprowadź kwotę">
+    <button onclick="deposit()">Wpłać</button>
+    <button onclick="withdraw()">Wypłać</button>
+</body>
+</html>
